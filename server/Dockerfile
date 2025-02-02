@@ -12,10 +12,10 @@ RUN npm install --production
 
 # Copy the entire server and client folders
 COPY server ./server
-COPY client ./client
+COPY client ../client
 
 # Expose the server port
-EXPOSE 2589
+EXPOSE 8080
 
 # Start the server
-CMD ["node", "server/server.js"]
+CMD ["node", "server.js"]
