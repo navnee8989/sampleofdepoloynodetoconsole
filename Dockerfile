@@ -1,19 +1,21 @@
-# Use a base image for Node.js
+# Use Node.js as base image
 FROM node:18
 
-# Set working directory inside the container
+# Set the working directory in the container
 WORKDIR /usr/src/app
 
-# Copy package.json and install dependencies
+# Copy package.json and package-lock.json first (for efficient caching)
 COPY server/package.json server/package-lock.json ./
+
+# Install only production dependencies
 RUN npm install --production
 
 # Copy the entire server and client folders
 COPY server ./server
 COPY client ./client
 
-# Expose the port
+# Expose the server port
 EXPOSE 2589
 
-# Start the application
+# Start the server
 CMD ["node", "server/server.js"]
