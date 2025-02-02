@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
 // Done route
 app.get("/done", (req, res) => {
     console.log("Hits done");
-    res.send("Done route hit!");
+    res.send("Done changes done ");
 });
 
 const PORT = process.env.PORT || 2589;
