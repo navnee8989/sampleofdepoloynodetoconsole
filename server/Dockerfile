@@ -1,21 +1,19 @@
-# Use an official Node.js runtime (LTS version) as a parent image
+# Use a base image for Node.js
 FROM node:18
 
-# Set the working directory in the container
-WORKDIR /app
+# Set working directory inside the container
+WORKDIR /usr/src/app
 
-# Copy package.json and package-lock.json
-COPY package*.json ./ 
-COPY 
+# Copy package.json and install dependencies
+COPY server/package.json server/package-lock.json ./
+RUN npm install --production
 
-# Install dependencies
-RUN npm install
+# Copy the entire server and client folders
+COPY server ./server
+COPY client ./client
 
-# Copy the rest of your application code
-COPY . .
+# Expose the port
+EXPOSE 2589
 
-# Expose the port your app will run on
-EXPOSE 8080
-
-# Define the command to run your app
-CMD ["npm", "start"]
+# Start the application
+CMD ["node", "server/server.js"]
