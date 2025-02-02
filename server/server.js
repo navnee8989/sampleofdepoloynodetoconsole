@@ -4,21 +4,21 @@ const path = require("path");
 
 const app = express();
 
-// Serve static files from the 'views' folder
-app.use(express.static(path.join(__dirname, 'client')));
+// Serve static files from the client folder
+const clientPath = path.join(__dirname, "..", "client");
+console.log("Serving static files from:", clientPath);
+app.use(express.static(clientPath));
 
-// Route for home page
+// Home route
 app.get("/", (req, res) => {
     console.log("Hits home");
-    console.log("Everything is done");
-
-    // Render the index.html page when accessing the home route
-    res.sendFile(path.join(__dirname, 'client', 'index.html'));
+    res.sendFile(path.join(clientPath, "index.html"));
 });
 
-// Route for done
-app.get("/done", () => {
+// Done route
+app.get("/done", (req, res) => {
     console.log("Hits done");
+    res.send("Done route hit!");
 });
 
 const PORT = process.env.PORT || 2589;
