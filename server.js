@@ -1,19 +1,27 @@
-const express = require("express")
-require("dotenv").config()
+const express = require("express");
+require("dotenv").config();
+const path = require("path");
 
+const app = express();
 
-const app = express()
+// Serve static files from the 'views' folder
+app.use(express.static(path.join(__dirname, 'views')));
 
-app.get("/done",()=>{
-    console.log("hits done")
-})
+// Route for home page
+app.get("/", (req, res) => {
+    console.log("Hits home");
+    console.log("Everything is done");
 
-app.get("/",()=>{
-    console.log("hits home")
-    console.log("evrrything is done ")
-})
+    // Render the index.html page when accessing the home route
+    res.sendFile(path.join(__dirname, 'views', 'index.html'));
+});
 
-const PORT = process.env.PORT || 2589
-app.listen(PORT,()=>{
-    console.log(`server start using this port ${PORT}`)
-})
+// Route for done
+app.get("/done", () => {
+    console.log("Hits done");
+});
+
+const PORT = process.env.PORT || 2589;
+app.listen(PORT, () => {
+    console.log(`Server started on port ${PORT}`);
+});
