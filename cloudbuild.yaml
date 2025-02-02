@@ -27,4 +27,10 @@ steps:
       - 'us-central1'
       - '--allow-unauthenticated'
 
+# Specify the service account to use
+serviceAccount: 'simplenodejs@simpleappnodemysql.iam.gserviceaccount.com'
+
+# Specify a logs bucket to store build logs
+logsBucket: 'gs://your-logs-bucket'
+
 timeout: 1200s
