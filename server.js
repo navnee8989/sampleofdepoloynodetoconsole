@@ -8,6 +8,9 @@ app.get("/done",()=>{
     console.log("hits done")
 })
 
+app.get("/",()=>{
+    console.log("hits home")
+})
 
 const PORT = process.env.PORT || 2589
 app.listen(PORT,()=>{
