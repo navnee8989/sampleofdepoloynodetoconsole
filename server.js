@@ -10,6 +10,7 @@ app.get("/done",()=>{
 
 app.get("/",()=>{
     console.log("hits home")
+    console.log("evrrything is done ")
 })
 
 const PORT = process.env.PORT || 2589
