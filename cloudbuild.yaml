@@ -1,0 +1,30 @@
+steps:
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['install']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - 'gcr.io/simpleappnodemysql/simpleappnodemysql'
+      - '.'
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - 'gcr.io/simpleappnodemysql/simpleappnodemysql'
+
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - 'simpleappnodemysql'
+      - '--image'
+      - 'gcr.io/simpleappnodemysql/simpleappnodemysql'
+      - '--platform'
+      - 'managed'
+      - '--region'
+      - 'us-central1'
+      - '--allow-unauthenticated'
+
+timeout: 1200s
