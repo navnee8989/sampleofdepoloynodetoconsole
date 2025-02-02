@@ -31,6 +31,6 @@ steps:
 serviceAccount: 'simplenodejs@simpleappnodemysql.iam.gserviceaccount.com'
 
 # Specify a logs bucket to store build logs
-logsBucket: 'gs://your-logs-bucket'
+logsBucket: 'gs://simplenodebucket'
 
 timeout: 1200s
