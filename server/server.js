@@ -11,8 +11,8 @@ app.use(express.static(clientPath));
 
 // Home route
 app.get("/", (req, res) => {
-    console.log("Hits home");
     res.sendFile(path.join(clientPath, "index.html"));
+    console.log("Hits home done ");
 });
 
 // Done route
