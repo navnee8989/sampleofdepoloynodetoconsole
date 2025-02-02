@@ -5,7 +5,7 @@ const path = require("path");
 const app = express();
 
 // Serve static files from the 'views' folder
-app.use(express.static(path.join(__dirname, 'views')));
+app.use(express.static(path.join(__dirname, 'client')));
 
 // Route for home page
 app.get("/", (req, res) => {
@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
     console.log("Everything is done");
 
     // Render the index.html page when accessing the home route
-    res.sendFile(path.join(__dirname, 'views', 'index.html'));
+    res.sendFile(path.join(__dirname, 'client', 'index.html'));
 });
 
 // Route for done
